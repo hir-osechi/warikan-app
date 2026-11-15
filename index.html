@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>割り勘アプリ | ログイン不要ですぐ計算</title>
+    <meta
+      name="description"
+      content="ログイン不要で使える無料の割り勘計算アプリ。合計金額と人数を入力すると、1円単位で1人あたりの支払い金額をすぐ計算できます。"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <h1>割り勘アプリ</h1>
+      <p class="description">ログイン不要。合計金額を入力すると、1人あたりの支払い金額を計算します。</p>
+
+      <form id="warikan-form" class="card" novalidate>
+        <label for="totalAmount">合計金額（円）</label>
+        <input id="totalAmount" name="totalAmount" type="number" min="1" max="99999999" step="1" required />
+        <p class="field-help">1〜99,999,999円で入力してください。</p>
+
+        <label for="peopleCount">人数</label>
+        <input id="peopleCount" name="peopleCount" type="number" min="1" max="1000" step="1" required />
+        <p class="field-help">1〜1,000人で入力してください。</p>
+
+        <p class="field-help">端数処理: 1円単位で切り上げ</p>
+        <input name="rounding" type="hidden" value="ceil1" />
+
+        <button type="submit">計算する</button>
+        <p id="errorMessage" class="error-message" role="alert" aria-live="polite"></p>
+      </form>
+
+      <section id="result" class="result" aria-live="polite">
+        <p>計算上の1人あたり: <strong id="rawPerPerson">-</strong></p>
+        <p>1人あたり: <strong id="perPerson">-</strong></p>
+        <p>回収合計: <strong id="collectedTotal">-</strong></p>
+        <p>余り: <strong id="remainder">-</strong></p>
+      </section>
+
+      <footer class="footer-links">
+        <a href="./privacy.html">プライバシーポリシー</a>
+        <a href="./terms.html">利用規約</a>
+      </footer>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
